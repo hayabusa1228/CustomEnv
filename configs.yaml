@@ -182,3 +182,27 @@ debug:
   prefill: 1
   batch_size: 10
   batch_length: 20
+
+custom_gridworld:
+  task: custom_gridworld
+  steps: 1e5
+  action_repeat: 1
+  envs: 4
+  train_ratio: 512
+  video_pred_log: true
+  time_limit: 100
+  actor: {dist: 'onehot', std: 'none'}
+  encoder: {mlp_keys: '$^', cnn_keys: 'image'}
+  decoder: {mlp_keys: '$^', cnn_keys: 'image'}
+
+custom_mountaincar:
+  task: custom_mountaincar
+  steps: 2e5
+  action_repeat: 1
+  envs: 4
+  train_ratio: 512
+  video_pred_log: true
+  time_limit: 200
+  actor: {dist: 'onehot', std: 'none'}
+  encoder: {mlp_keys: '$^', cnn_keys: 'image'}
+  decoder: {mlp_keys: '$^', cnn_keys: 'image'}

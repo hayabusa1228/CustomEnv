@@ -193,6 +193,10 @@ def make_env(config, mode, id):
 
         env = minecraft.make_env(task, size=config.size, break_speed=config.break_speed)
         env = wrappers.OneHotAction(env)
+    elif suite == "custom":
+        import envs.custom_gym as custom_gym
+
+        env = custom_gym.make_env(config, mode, id)
     else:
         raise NotImplementedError(suite)
     env = wrappers.TimeLimit(env, config.time_limit)
