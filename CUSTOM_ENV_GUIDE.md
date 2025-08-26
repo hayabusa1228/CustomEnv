@@ -47,6 +47,12 @@ class CustomEnv:
     def _format_obs(self, obs):
         # 観測を辞書形式に変換
         return {'image': obs, 'is_first': False}
+    
+    def render(self):
+        # 環境の可視化（TensorBoardでの動画記録用）
+        # rgb_array形式でnumpy配列の画像を返す
+        # (height, width, 3)
+        return self._env.render(mode='rgb_array')
 ```
 
 ### 2. 環境登録
@@ -134,6 +140,7 @@ python3 dreamer.py --configs custom \
 - `step(action)`: アクションを実行し、観測・報酬・終了フラグを返す
 - `obs_space`: 観測空間のプロパティ
 - `act_space`: 行動空間のプロパティ
+- `render()`: 環境の可視化用画像を返す（オプション、ただし推奨）
 
 ### 観測フォーマット
 観測は辞書形式で返す必要があります：
